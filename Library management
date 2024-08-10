@@ -26,10 +26,16 @@ CREATE TABLE Transactions (
 );
 INSERT INTO Books (title, author, genre, published_year, available_copies)
 VALUES ('To Kill a Mockingbird', 'Harper Lee', 'Fiction',1980,5);
+INSERT INTO Books (title, author, genre, published_year, available_copies)
+VALUES (' a Man', 'loo', 'action',1930,3);
 INSERT INTO Members (name, email, phone, join_date)
 VALUES ('John Doe', 'johndoe@example.com', '123-456-7890','2024-08-09');
+INSERT INTO Members (name, email, phone, join_date)
+VALUES ('Johnnathan', 'johnnathan@example.com', '143-489-8890','2024-08-01');
 INSERT INTO Transactions (book_id, member_id, borrow_date)
 VALUES (1, 1, '2024-08-09');
+INSERT INTO Transactions (book_id, member_id, borrow_date)
+VALUES (2, 2, '2024-08-01');
 UPDATE Books
 SET available_copies = available_copies - 1
 WHERE book_id=1;
@@ -43,7 +49,5 @@ SELECT Books.title, Transactions.borrow_date, Transactions.return_date
 FROM Books
 JOIN Transactions ON Books.book_id = Transactions.book_id
 WHERE Transactions.member_id=1;
-DELETE FROM Books
-WHERE book_id=1;
-DELETE FROM Members
-WHERE member_id=1;
+DELETE FROM Transactions WHERE book_id=2;
+
